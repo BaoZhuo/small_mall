@@ -10,11 +10,35 @@
     </parent>
     <groupId>com.zhishi</groupId>
     <artifactId>demo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>common</module>
+        <module>common-db</module>
+        <module>eureka</module>
+        <module>gateway</module>
+        <module>service</module>
+        <module>service-api</module>
+        <module>web</module>
+        <module>common</module>
+    </modules>
+    <packaging>pom</packaging>
+    <description>
+        父工程 统一版本的控制 所有的工程都应该继承父工程
+    </description>
+
+
+
+
+
     <name>zhishi</name>
-    <description>Demo project for Spring Boot</description>
+    <description>
+        父工程 统一版本的控制 所有的工程都应该继承父工程
+    </description>
     <properties>
-        <java.version>11</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <!--打包的时候跳过测试-->
     </properties>
     <dependencies>
         <dependency>
@@ -27,8 +51,39 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-    </dependencies>
 
+        <!--fastjson-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.51</version>
+        </dependency>
+
+        <!--swagger文档 可选的-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.6.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.6.1</version>
+        </dependency>
+    </dependencies>
+    <!--springcloud的版本控制-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Greenwich.SR1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <build>
         <plugins>
             <plugin>
